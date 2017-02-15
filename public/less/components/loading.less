@@ -1,0 +1,46 @@
+/**
+ * loading text cotent style
+ */
+.loading {
+    text-align: center;
+
+    .text {
+        font-size: 15px;
+        font-weight: 900;
+        color: #0275d8;
+    }
+}
+
+/**
+ * loading div style
+ */
+// 旋转 样式排布
+// 1 2 3
+// 4 5 6
+// 7 8 9
+.sk-spinner {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    &:nth-child(1) {.animation-delay(.2s)}
+    &:nth-child(2) {.animation-delay(.3s)}
+    &:nth-child(3) {.animation-delay(.4s)}
+    &:nth-child(4) {.animation-delay(.1s)}
+    &:nth-child(5) {.animation-delay(.2s)}
+    &:nth-child(6) {.animation-delay(.3s)}
+    &:nth-child(7) {.animation-delay(0s)}
+    &:nth-child(8) {.animation-delay(.1s)}
+    &:nth-child(9) {.animation-delay(.2s)}
+}
+.sk-spinner-cube-grid {
+    // 方块
+    .sk-cube {
+        width: 33%;
+        height: 33%;
+        background-color: #333;
+        float: left;
+        // detail in base/animation.less
+        -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+        animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    }
+}

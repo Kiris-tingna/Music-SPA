@@ -1,0 +1,109 @@
+/**
+ * checkbox style
+ */
+.mc-checkbox-warpper {
+    // 在快速多次点击的时候会出现选中文本的情况，所以禁用user-select
+    .pre(user-select, none);
+
+    display: inline-block;
+}
+.mc-checkbox {
+    position: absolute;
+    display: none;
+}
+
+.mc-checkbox[disabled] {
+    cursor: not-allowed;
+}
+// no ckecked
+.mc-checkbox + label {
+    position: relative;
+    
+    padding-left: 30px;
+    margin-bottom: 0;
+
+    cursor: pointer;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    
+    &:hover {
+        &:before {
+            animation-duration: 0.4s;
+            animation-fill-mode: both;
+            animation-name: hover-color;
+        }
+    }
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        content: '';
+        border-radius: 3px;
+        border: 1px solid #c0c0c0;
+    }
+    &:after {
+        top: 0;
+        left: 5px;
+        box-sizing: border-box;
+        width: 6px;
+        height: 12px;
+        transform: rotate(45deg);
+        border-width: 2px;
+        border-style: solid;
+        border-color: #fff;
+
+        border-top: 0;
+        border-left: 0;
+        position: absolute;
+        display: none;
+        content: '';
+    }
+}
+
+.mc-checkbox[disabled] + label {
+    cursor: not-allowed;
+    color: lighten(#c0c0c0, 14%);
+    &:hover,
+    &:before,
+    &:after {
+        cursor: not-allowed;
+    }
+    &:hover {
+        &:before {
+            border: 1px solid lighten(#c0c0c0, 14%);
+            animation-name: none;
+        }
+    }
+    &:before {
+        border-color: lighten(#c0c0c0, 14%);
+    }
+}
+
+// checked
+.mc-checkbox:checked + label {
+    &:before {
+        animation-name: none;
+    }
+    &:after {
+        display: block;
+    }
+}
+
+.mc-checkbox:checked + label {
+    &:before {
+        border: #3e97eb;
+        background: #3e97eb;
+    }
+}
+.mc-checkbox:checked[disabled] + label {
+    &:before {
+        border: lighten(#3e97eb, 30%);
+        background: lighten(#3e97eb, 30%);
+    }
+}

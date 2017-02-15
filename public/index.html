@@ -1,0 +1,177 @@
+<!doctype html>
+<html ng-app="music">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <title>Music</title>
+    <!-- develop -->
+    <link rel="stylesheet" href="css/core.css" />
+    <link rel="stylesheet" href="css/less.css" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- run -->
+    <!-- <link rel="stylesheet" href="dist/css/bundle-44f6ea694e.css" /> -->
+    <script>
+        window.audio = '<audio id="audio"></audio>';
+    </script>
+</head>
+<body ng-controller="RootController">
+<!-- alert start -->
+<div class="alert-wrapper" ng-include="'./tpls/alert.html'"></div>
+<!-- ./alert end -->
+<!-- header start -->
+<header class="ly-side-nav" ng-init="leftPannel = true" style="width:{{leftPannel ? 120 : 50}}px" ng-include="'./tpls/sidebar.html'"></header>
+<!-- ./header end -->
+
+<!-- main container -->
+<div class="container" style="margin-left: 120px;">
+    <div class="row">
+        <div class="col-md-8 col-xs-12 media-md-img">
+            <ol class="breadcrumb hidden-xs-down ly-ol">
+                <li><a href="#">Home</a></li>
+                <li><a href="javascript:void(0);" ng-init="Getlist(21)">{{common.title}}</a></li>
+                    
+                <li class="active ly-bread-small" ng-bind="common.desc">播放中</li>
+
+                <div class="pull-right hidden-md-down">
+                    <span class="ly-tag"><i class="fa fa-calendar"></i>&emsp;更新日期</span><small ng-bind="common.date"></small>
+                </div>
+            </ol>
+            <!-- player -->
+            <div class="row">
+            <!-- detail -->
+            <section class="col-md-6 col-xs-12">
+                <div class="ly-album">
+                <img ng-src="{{song.img | image_default_avatar}}" class="img-rounded" alt="{{song.title}}"/>
+                <div class="ly-play" ng-class="{true:'ly-play-pause', false:'ly-play-play'}[playing]" ng-click="!playing ? play():pause()">
+                    <i class="fa" ng-class="{true:'fa-pause ly-pause-icon', false:'fa-play ly-play-icon'}[playing]"></i>
+                </div>
+
+                </div>
+            </section>
+            <!-- contro -->
+            <section class="col-md-6 col-xs-12 hidden-xs-down">
+                <!-- the song's title -->
+                <h2 ng-bind="song.title"></h2>
+                <!-- the song's album -->
+                <span class="text-muted ly-tag">专辑</span><small ng-bind="song.album" ></small>
+                <!-- the song's author -->
+                <span class="text-muted ly-tag">歌手</span><small ng-bind="song.author"></small>
+
+                <!-- lrc -->
+                <section class="lrc">
+                    <div class="content" ng-bind-html="song.lrc | trust_as_html"></div>
+                </section>
+            </section>
+            <!-- progress -->
+            <section class="col-md-12 dc-progress">
+                <div class="btn-group">
+                    <!-- control -->
+                    <button type="button" class="btn btn-default" ng-click="prev()" ng-class="{true:'',false:'disabled'}[hasPrev]">
+                        <i class="fa fa-step-backward"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="play()" ng-if="!playing">
+                        <i class="fa fa-play"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="pause()" ng-if="!!playing">
+                        <i class="fa fa-pause"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="next()" ng-class="{true:'',false:'disabled'}[hasNext]">
+                        <i class="fa fa-step-forward"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="playMode=!playMode">
+                        <i class="fa fa-refresh" ng-if="!playMode"></i> <!-- 单曲循环 -->
+                        <i class="fa fa-repeat"  ng-if="playMode"></i>  <!-- 循环播放 -->
+                    </button>
+                </div>
+                <!-- / -->
+                
+                <div class="dc-progress-bar" dc-progress-bar>
+                    <div class="played" style="width:{{progress*progressW + 10}}px"></div>
+                    <div class="dot" style="left:{{progress*progressW}}px"></div>
+                </div>
+                <!-- curretn time -->
+                <span class="current" ng-bind="song.currentTime | formatTime"></span>
+                <span class="sepa">/</span>
+                <!-- total time -->
+                <span class="duration" ng-bind="song.time | formatTime"></span>
+            </section>
+            </div>
+        </div>
+
+        <!-- song list -->
+        <div class="col-md-4 col-sm-12">
+                    <!-- 搜素 -->
+        <div class="input-group ly-search" style="margin:5px 0">
+            <input type="text" class="form-control" ng-model="keyword" placeholder="歌名、歌手">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button" ng-click="search()">搜索</button>
+            </span>
+        </div>
+
+        <ul class="list-group ly-list">
+            <li class="list-group-item ly-list-wrap clearfix" ng-repeat="item in list">
+                <!-- left -->
+                <div class="ly-list-item pull-left">
+                    <!-- directive.js / checkItem -->
+                    <lycheck is-all="boolAllChecked" check-id="{{item.id}}"></lycheck>
+                    <!-- 当前游标 -->
+                    <span class="ly-list-cur" ng-if="playing && song.id == item.id"></span>
+                    <div class="ly-list-desc"> 
+                    <p ng-bind="item.title" class="ly-list-author"></p>
+                    <p ng-bind="item.author" class="ly-list-author"></p>
+                    </div> 
+                </div>
+                <!-- right -->
+                <div class="pull-right">
+                    <a href="javascript:void(0)" ng-click="load(item)" ng-if="!playing || song.id!=item.id">播放</a>
+                    <a href="javascript:void(0)" ng-click="pause()" ng-if="playing && song.id == item.id">暂停</a>
+                    <a href="javascript:void(0)" ng-if="!isLike" ng-click="like($index)">喜欢</a>
+                    <a href="javascript:void(0)" ng-if="!!isLike" ng-click="unlike($index)">不喜欢</a>
+                    <a href="javascript:void(0)" ng-click="download(item)">下载</a>
+                </div>
+            </li>
+        </ul>
+        <!-- pagination -->
+        <pagination conf="conf"></pagination>
+        </div>
+        <!-- item API -->
+        <button ng-click="ChooseAll()">全选</button>
+        <button ng-click="GetAllChoose()">Action</button>
+        <button ng-click="Getlike()">我喜欢听</button>
+    </div>
+</div>
+<!-- ./main container end -->
+<!-- loading ui layer -->
+<div class="modal-sample" ng-if="loading">
+    <div class="loading" ng-include="'./tpls/loading.html'">
+        
+    </div>
+</div>
+<!-- ./loading ui layer end -->
+
+<!-- 这段代码能绕过限制 -->
+<iframe id="fr" src="javascript:parent.audio" frameborder="0"></iframe>
+
+<!-- angularjs -->
+<!-- <script src="bower_components/angular/angular.min.js"></script> -->
+<script src="bower_components/angular/angular.js"></script>
+
+<!-- common js tools -->
+<script src="js/common.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/service.js"></script>
+<script src="js/filter.js"></script>
+<script src="js/directive.js"></script>
+<script src="js/injector.js"></script>
+
+<!-- <script src="dist/js/bundle-584a3ab578.js"></script> -->
+<!-- run -->
+</body>
+</html>

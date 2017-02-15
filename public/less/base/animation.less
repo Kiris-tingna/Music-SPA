@@ -1,0 +1,81 @@
+// ------------------- mixin ---------------------
+// 前缀
+.pre(@style,@value){
+    -webkit-@{style}: @value;
+       -moz-@{style}: @value;
+        -ms-@{style}: @value;
+            @{style}: @value;
+}
+// animate
+.animation(@value){
+    .pre(animation,@value);
+}
+.animation-delay(@delay) {
+    .pre(animation-delay,@delay);
+}
+// 渐变
+.transition(@arg){
+    .pre(transition,@arg);
+}
+
+// -------------------- alert animate -------------------
+@-webkit-keyframes slideRight { 
+    0% { 
+        -webkit-transform: translateX(-100%); 
+        transform: translateX(-100%); 
+    }
+    100% { 
+        -webkit-transform: translateX(0); 
+        transform: translateX(0); 
+    } 
+}
+@keyframes slideRight { 
+    0% { 
+        -webkit-transform: translateX(-100%); 
+        transform: translateX(-100%); 
+    }
+    100% { 
+        -webkit-transform: translateX(0); 
+        transform: translateX(0); 
+    } 
+}
+
+// ------------------- loading icon animate -----------------
+@-webkit-keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1); 
+    }
+    35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1); 
+    } 
+}
+
+@keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1); 
+    }
+    35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1); 
+    } 
+}
+// ------------------ for checkbox -----------------------
+@-webkit-keyframes hover-color {
+    from {
+        border-color: #c0c0c0;
+    }
+    to {
+        border-color: #3e97eb;
+    }
+}
+@keyframes hover-color {
+    from {
+        border-color: #c0c0c0;
+    }
+    to {
+        border-color: #3e97eb;
+    }
+}

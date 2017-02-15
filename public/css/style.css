@@ -1,0 +1,243 @@
+.ly-logo {
+    width: 50px;
+    height: 60px;
+    margin: 0 auto;
+    background: url(../image/Music.png) 0 0 no-repeat;
+    background-size: 100%;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+@media(max-width:768px) {
+    .media-md-img {
+        text-align: center
+    }
+}
+
+.ly-album {
+    position: relative;
+    display: inline-block;
+}
+.ly-album img {
+    max-width: 100%;
+}
+.ly-tag {
+    font-family: "MicroSoft Yahei";
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.ly-list {
+    font-family: "MicroSoft Yahei";
+    font-size: 12px;
+    line-height: 1.5;
+}
+.ly-list-wrap {
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.ly-list-wrap:hover {
+    background-color: #e9e9e9;
+}
+.ly-list-author {
+    max-width: 180px;
+    white-space:nowrap; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.ly-list-item {
+    width: 70%;
+}
+.ly-list-cur {
+    display: inline-block;
+    background: #ad7a86;
+    width: 3px;
+    height: 80%;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    cursor: pointer;
+}
+.ly-list-desc {
+    display: inline-block;
+    vertical-align: top;
+}
+.ly-list-desc p {
+    line-height: 1.5;
+    margin: 0;
+}
+.ly-play {
+    position: absolute;
+    border-radius: 50%;
+
+    border: 2px solid #fff;
+    color: #fff;
+    
+    opacity: .8;
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+    background: rgba(0,0,0,.2);
+
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.ly-play-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 100px;
+    height: 100px;
+    
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+.ly-play-pause {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+
+    width: 30px;
+    height: 30px;
+}
+.ly-play:hover {
+    opacity: 1;
+}
+
+.ly-play-icon,
+.ly-pause-icon {
+    position: absolute;
+}
+.ly-play-icon {
+    top: 0;
+    left: 28px;
+    font-size: 60px;
+    line-height: 100px;
+}
+.ly-pause-icon {
+    top: 0;
+    left: 7px;
+    font-size: 16px;
+    line-height: 27px;
+}
+.ly-side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*width: 100px;*/
+    height: 100%;
+    background-color: #f5f5f5;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.14),0 1px 2px 0 rgba(0,0,0,.2);
+
+    /*-webkit-transition: all .1s ease;*/
+    /*transition: all .1s ease;*/
+}
+.ly-side-menu {
+   list-style: none;
+   padding: 0;
+   max-height: 90vh;
+   overflow: hidden;
+   -webkit-user-select: none;
+   user-select: none;
+   border-bottom: 1px solid #e1e1e1;
+}
+.ly-side-item {
+    display: block;
+    overflow: hidden;
+}
+.ly-side-title {
+    display: block;
+    overflow: hidden;
+}
+.ly-side-title a {
+    display: block;
+    font-size: 14px;
+    color: #E26A6A;
+    padding: 0 10px;
+    margin: 10px 0;
+    line-height: 1.5;
+    font-family: "MicroSoft Yahei";
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.ly-side-title i {
+    margin-right: 8px;
+    width: 12px;
+}
+.ly-side-item a {
+    display: block;
+    font-size: 14px;
+    color: #f7b6b6;
+    padding: 0 10px;
+    margin: 10px 0;
+    line-height: 1.5;
+    font-family: "MicroSoft Yahei";
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.ly-side-item i {
+    margin-right: 5px;
+}
+.ly-side-item span {
+    line-height: 26px;
+}
+.ly-side-item:hover {
+    background-color: #e7e7e7;; 
+}
+.ly-side-lg {
+    font-size: 24px;
+}
+.ly-side-btn {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #0275d8;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.ly-side-btn-p {
+    font-family: "MicroSoft Yahei";
+    font-size: 12px;
+}
+.ly-side-close {
+    font-size: 22px;
+}
+.ly-side-open {
+    font-size: 20px;
+}
+.ly-search {
+    font-family: "MicroSoft Yahei";
+}
+.ly-bread-small {
+    font-size: .6rem;
+    max-width: 60%;
+    overflow: hidden;
+    vertical-align: text-top;
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+}
+.ly-ol {
+    font-family:'MicroSoft Yahei';
+    margin-bottom: 20px;
+}
+.breadcrumb {
+    font-size: .9rem;
+    background-color: #f5f5f5;
+}
+.breadcrumb li a {
+    color: #000;
+    text-decoration: none;
+}
+.show {
+    display: block !important;
+}
+.hide {
+    display: none !important;
+}

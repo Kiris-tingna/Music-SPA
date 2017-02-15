@@ -1,0 +1,6 @@
+<div role="alert" class="alert alert-dismissible alert-{{alert.type}}" ng-repeat="alert in alerts">
+    <button aria-label="Close" data-dismiss="alert" ng-click="alert.close()" class="close" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <span ng-bind-html="alert.msg | trust_as_html"></span>
+</div>

@@ -1,0 +1,109 @@
+.btn{
+  outline: none !important;
+}
+.modal-sample {
+    position: fixed;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    /*background: rgba(0, 0, 0, 0.2);*/
+}
+.modal-sample > .loading {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /*  background: rgba(0, 0, 0, 0.2);*/
+
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+#fr {
+    display: none;
+}
+.dc-progress {
+    width: 100%;
+    margin: 4px 0;
+}
+.dc-progress .current,
+.dc-progress .sepa,
+.dc-progress .duration {
+    display: inline-block;
+    color: #999;
+    font-size: .8em;
+}
+.dc-progress .current,
+.dc-progress .duration {
+  font-size: 11px;
+}
+.dc-progress-bar {
+    width: 60%;
+    display: inline-block;
+    position: relative;
+    height: 10px;
+    background: #e7e9eb;
+    cursor: pointer;
+    /*margin-bottom: -1px;*/
+    border-radius-left: 5px;
+    -webkit-border-radius: 5px;
+}
+.played {
+    transition: all linear .2s;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    position: absolute;
+    display: block;
+    height: 10px;
+    background-color: #00b366;
+    z-index: 50;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 4px 0 rgba(0, 179, 102, 0.3);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 179, 102, 0.3);
+}
+.dot {
+    transition: all linear .2s;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    background: rgba(255, 255, 255, 1);
+    display: block;
+    border-radius: 5px;
+    z-index: 60;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+.lrc {
+  height: 340px;
+  padding: 0 10px;
+  width: 100%;
+/*  margin: 20px 0;*/
+  background: transparent;
+  color: #999;
+  font-size: .8rem;
+  text-align: center;
+  overflow: hidden;
+  font-family: "MicroSoft Yahei";
+  line-height: 2.5;
+}
+.lrc .content {
+  transition: all linear .5s;
+  -webkit-transition: all linear .5s;
+  -moz-transition: all linear .5s;
+}
+.lrc .content > div {
+  transition: all linear .5s;
+  -webkit-transition: all linear .5s;
+  -moz-transition: all linear .5s;
+}
+.lrc .content .current {
+  color: #333;
+}

@@ -1,0 +1,56 @@
+/**
+ * alter
+ * 消息从左向右滑出
+ */
+.alert-wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 24px;
+
+    z-index: 10;
+    
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+    // 具体的警告浮层
+    .alert{
+        position: relative;
+        padding: 5px 30px 5px 5px !important;
+        
+        -webkit-animation: slideRight .1s linear;
+        animation: slideRight .1s linear;
+        
+        span {
+           font-size: .9rem;
+           line-height: 1; 
+        }
+    }
+}
+
+/**
+ * nav
+ * 导航样式
+ */
+.navbar-brand,.nav-link {
+    color: #fff;
+    &:hover {
+        color: #ccc;
+    }
+}
+
+.navbar {
+    // 导航
+    .navbar-brand {
+        font-size: 1.1rem
+    }
+    // 导航项目
+    .nav-link {
+        font-size: .9rem;
+    }
+    // 导航搜索
+    .form-control {
+        line-height: 1;
+    }
+}
+
